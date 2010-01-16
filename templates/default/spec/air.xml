@@ -1,0 +1,12 @@
+<application xmlns="http://ns.adobe.com/air/application/1.5.3">
+	<id>AirSpec</id>
+	<version>0.1</version>
+	<filename>Air Spec</filename>
+	<initialWindow>
+		<content>air.html</content>
+		<visible>true</visible>
+		<width>1024</width>
+		<height>720</height>
+		<minSize>1024 720</minSize>
+	</initialWindow>
+</application>

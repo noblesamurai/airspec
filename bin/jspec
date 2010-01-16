@@ -169,6 +169,8 @@ command :run do |c|
   c.option '-B', '--bind', 'Auto-run specs when source files or specs are altered'
   c.option '-R', '--rhino', 'Run specs using Rhino'
   c.option '-N', '--node', 'Run specs using Node.js'
+  c.option '-A', '--air', 'Run specs using Adobe AIR adl interpreter'
+  c.option '-C', '--airconsole', 'Run specs using Adobe AIR adl interpreter in console mode'
   c.option '-S', '--server', 'Run specs using the JSpec server'
   c.option '-P', '--port NUMBER', Integer, 'Start JSpec server using the given port number'
   c.when_called do |args, options|

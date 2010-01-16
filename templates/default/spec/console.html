@@ -1,0 +1,23 @@
+<html>
+	<head>
+		<script src="airlib/AIRAliases.js"></script>
+		<script>
+		print = air.trace;
+		quit = air.NativeApplication.nativeApplication.exit;
+		</script>
+		<script src="lib/jspec.js"></script>
+		<script src="lib/jspec.xhr.js"></script>
+		<script src="codelib/yourlib.js"></script>
+		<script src="unit/spec.helper.js"></script>
+		<script>
+			function runSuites() {
+				JSpec
+				.exec('unit/spec.js')
+				.run({ reporter: JSpec.reporters.Terminal })
+				.report({ fixturePath: 'fixtures' })
+			}
+		</script>
+	</head>
+	<body class="jspec" onLoad="runSuites();">
+	</body>
+</html>

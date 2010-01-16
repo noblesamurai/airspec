@@ -1,3 +1,7 @@
+3.1.4 / 2010-01-17
+==================
+
+  * Added --air and --airconsole to work with Adobe AIR adl interpreter
 
 3.1.3 / 2010-01-14
 ==================

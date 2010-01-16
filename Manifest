@@ -64,6 +64,12 @@ templates/default/spec/server.html
 templates/default/spec/server.rb
 templates/default/spec/unit/spec.helper.js
 templates/default/spec/unit/spec.js
+templates/default/spec/air.html
+templates/default/spec/air.xml
+templates/default/spec/airlib/AIRAliases.js
+templates/default/spec/airlib/AIRIntrospector.js
+templates/default/spec/console.html
+templates/default/spec/console.xml
 templates/rails/commands/example_commands.rb
 templates/rails/dom.html
 templates/rails/rhino.js

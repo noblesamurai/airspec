@@ -14,6 +14,7 @@ and **much more**.
   * Mock Ajax Requests
   * Rhino support
   * Node.js support
+  * Adobe AIR ADL interpreter support
   * Async support
   * Growl (unobtrustive notifications) support
   * Fixture support

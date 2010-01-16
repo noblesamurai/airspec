@@ -32,6 +32,33 @@ module JSpec
     def node file
       system "node #{file}"
     end
+
+    ##
+    # Execute _file_ with Adobe AIR adl
+	# 
+	# The JSpec lib must be located beneath the spec folder.
+	# This is necessary because Adobe AIR can't reference any files above it's application.xml file.
+    
+    def air file
+      jslib = normalize("lib")
+      if !File.exist?(jslib)
+        begin 
+          puts  "Can't find #{jslib} necessary for Adobe AIR adl execution."
+		  print "Would you like to (c)opy or (s)ymlink or (a)bort? (c/s/a): " 
+          c = STDIN.gets.chomp.downcase
+        end while !["c", "s", "a"].include? c
+
+        case c
+            when "c" 
+              vendorize_with_copy
+            when "s"
+              vendorize_with_symlink
+            when "a"
+              exit
+        end
+      end
+      system "adl #{file}"
+    end
     
     ##
     # Execute _file_ with Rhino.
@@ -83,7 +110,17 @@ module JSpec
       copy_template :default
       vendorize_with_symlink if options.include? :symlink
       vendorize_with_copy if options.include? :freeze
+      create_helper_symlink
       replace_root
+    end
+
+    ##
+    # Create Adobe AIR helper symlink
+	# 
+	# Necessary because Adobe AIR can't reference files outside the application.xml folder
+    
+    def create_helper_symlink
+      FileUtils.symlink "../lib", normalize("codelib"), :force => true
     end
     
     ##
@@ -234,6 +271,12 @@ module JSpec
       when options.include?(:node)
         path ||= normalize('node.js')
         action = lambda { node(path) }
+      when options.include?(:air)
+        path ||= normalize('air.xml')
+        action = lambda { air(path) }
+      when options.include?(:airconsole)
+        path ||= normalize('console.xml')
+        action = lambda { air(path) }
       when options.include?(:rhino)
         path ||= normalize('rhino.js')
         action = lambda { rhino(path) }
