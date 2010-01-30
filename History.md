@@ -3,6 +3,12 @@
 
   * Added --air and --airconsole to work with Adobe AIR adl interpreter
 
+3.2.0 / 2010-01-27
+==================
+
+  * Added support for running specs in WebKit nightlies.
+  * Fixed bug in dom.html templates that was incorrectly passing options to report() rather than run().
+
 3.1.3 / 2010-01-14
 ==================
 
