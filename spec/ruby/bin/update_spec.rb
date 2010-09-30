@@ -1,4 +1,4 @@
-
+require 'fileutils'
 include FileUtils
 
 describe "jspec" do
