@@ -1,5 +1,34 @@
 
 describe 'jQuery'
+  describe 'puts()'
+    it 'should output selector when present'
+      object = { jquery: '1.3.2', selector: '.foo bar' }
+      puts(object).should.eql 'selector ".foo bar"'
+    end
+    
+    it 'should output outerHTML otherwise'
+      puts($('<p>Foo</p>')).should.match(/<p>Foo<\/p>/i)
+    end
+  end
+  
+  describe 'with elements'
+    it 'should output the outerHTML'
+      puts($('<p>Foo</p>').get(0)).should.match(/<p>Foo<\/p>/i)
+    end
+  end
+  
+  describe 'with the document element'
+    it 'should output "jQuery(document)"'
+      puts($(document)).should.match(/jQuery\(document\)/i)
+    end
+  end
+  
+  describe 'without parameters'
+    it 'should output "jQuery()"'
+      puts($()).should.match(/jQuery\(\)/i)
+    end
+  end
+  
   describe 'sandbox()'
     before
       dom = sandbox()
@@ -47,11 +76,13 @@ describe 'jQuery'
       end
     end
 
-    describe 'have_tags / have_many'
+    describe 'have_tags / have_many / have_any'
       it 'should check if more than one child is present'
         elem.should.have_tags 'option'
         elem.should.have_many 'option'
         elem.should.not.have_many 'label'
+        elem.find('option').remove()
+        elem.should.not.have_any 'option'
       end
     end
 
@@ -94,6 +125,20 @@ describe 'jQuery'
         $('select', elem).should.not.have_classes 'foo', 'save'
       end
     end
+    
+    describe 'have_event_handlers'
+      it 'should check if an element has handlers for a given event'
+        elem.should.not.have_event_handlers 'click'
+        elem.bind('click', function(){})
+        elem.should.have_event_handlers 'click'
+      end
+
+      it 'should check if an element has handlers for a given event when binded with live'
+        $('.live-event').should.not.have_event_handlers 'click'
+        $('.live-event').live('click', function(){})
+        $('.live-event').should.have_event_handlers 'click'
+      end
+    end
 
     describe 'be_visible'
       it 'should check that an element is not hidden or set to display of none'
@@ -117,6 +162,14 @@ describe 'jQuery'
         '<input type="button"/>'.should.not.be_disabled
         '<input type="button" disabled="disabled" />'.should.be_disabled
         '<option value="foo" selected="selected">Foo</option>'.should.be_selected
+      end
+    end
+    
+    describe 'be_animated'            
+      it 'should check if an element is currently animated'
+        elem.should.not.be_animated
+        elem.fadeIn(1000)
+        elem.should.be_animated
       end
     end
     

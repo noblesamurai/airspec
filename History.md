@@ -3,6 +3,108 @@
 
   * Added --air and --airconsole to work with Adobe AIR adl interpreter
 
+4.3.3 / 2010-07-13
+==================
+
+  * Fixed destubing stub overrides
+  * Fixed jQuery have_event_handlers to match "live" events
+  * Installables updated: MooTools to 1.2.4, Dojo to 1.4.0, jQuery to 1.4.0.
+  * Call rhino with "-opt -1" to avoid silent failure
+
+4.3.2 / 2010-05-30
+==================
+
+  * Fixed nodejs support due to recent Buffer changes
+
+4.3.1 / 2010-05-04
+==================
+
+  * Fixed; proper handling of undefind values for have_prop[erty]
+
+4.3.0 / 2010-05-04
+==================
+
+  * Added chromium to supported browsers
+  * Fixed rhino support by using java command
+  * Fixed MockXMLHttpRequest#getAllResponseHeaders() matches spec returning a string
+
+4.2.1 / 2010-04-15
+==================
+
+  * Fixed; strict type checks for have_prop[erty]
+  * Removed some globals
+
+4.2.0 / 2010-04-07
+==================
+
+  * Merge branch 'master' of git://github.com/vipulb/jspec into xml
+  * Added support for mock requests to parse xml
+  * Added have_event_handlers matcher
+  * Adding be_animated matcher
+  * Add option "disableColors" to disable coloring in terminal reporter
+
+4.1.0 / 2010-03-25
+==================
+
+  * Added jspec.nodejs.js - have_prototype matcher
+  * Added jspec.nodejs.js - have_keys matcher
+  * Added jspec.nodejs.js - have_configurable_property matcher
+  * Added jspec.nodejs.js - have_writable_property matcher
+  * Added jspec.nodejs.js
+  * Remove unused error() method
+
+4.0.0 / 2010-03-22
+==================
+
+  * Added json_fixture(). Closes #157
+  
+  * Added swalke16 to contrib list (shared behavior fixes)
+  
+  * Added shared_behaviors_for() for shared behavior support.
+    This is essentially a Suite instance, however the shared
+    behavior itself is no longer executed, only suites which use
+    should_behave_like().
+    
+  * Added before_nested / after_nested for legacy support.
+    These hooks function just as before / after did < 4.0.0,
+    where they will execute once per nested suite as well.
+    
+  * Changed; before / after are now executed ONLY once, not
+    when a nested suite is running. Use before_nested / after_nested 
+    if you wish to re-gain this functionality.
+    
+  * Removed JSpec.error()
+
+3.3.3 / 2010-03-15
+==================
+
+  * Added nodejs template. use --node
+
+3.3.2 / 2010-02-25
+==================
+
+  * Fixed; output bug with shared behaviors
+
+3.3.1 / 2010-02-22
+==================
+
+  * Added have_any matcher
+  * Fixed; using readFileSync for node.js support
+
+3.3.0 / 2010-02-16
+==================
+
+  * Added support for Chrome on Linux [alex-bepple]
+  * Added node.js support in core, no longer has node-specific code in template
+  * Fixed linux Default browser support, use 'xdg-open' [alex-bepple]
+  * Fixed lastRequest global
+  * Removed Console reporter. Closes #142
+
+3.2.1 / 2010-02-02
+==================
+
+  * Fixed JRuby compatibility; Look up host in a JRuby-compatible way.
+
 3.2.0 / 2010-01-27
 ==================
 

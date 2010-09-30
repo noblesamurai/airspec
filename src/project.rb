@@ -64,7 +64,7 @@ module JSpec
     # Execute _file_ with Rhino.
 
     def rhino file
-      system "java -jar #{rhino_jar} #{file}"
+      system "java -jar #{rhino_jar} -opt -1 #{file}"
     end
     
     ##
@@ -107,7 +107,7 @@ module JSpec
 
     def init! options = {}
       verify_empty!
-      copy_template :default
+      copy_template options[:node] ? :node : :default
       vendorize_with_symlink if options.include? :symlink
       vendorize_with_copy if options.include? :freeze
       create_helper_symlink
@@ -311,7 +311,7 @@ module JSpec
     # Return the Project instance which should be used for _dest_. 
     
     def self.for dest
-      (File.directory?("#{dest}/vendor") ? 
+      (File.exists?("#{dest}/config/boot.rb") ?
         JSpec::Project::Rails : 
           JSpec::Project).new(dest)
     end

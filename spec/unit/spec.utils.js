@@ -82,6 +82,15 @@ describe 'Utility'
           text.should_eql 'is awesome'
         })
       end
+			
+			it 'should overwrite previous stub'
+				stub(object, 'toString').and_return('I am stub overriden')
+				object.toString().should.eql 'I am stub overriden'
+				
+				destub(object, 'toString')
+				object.toString().should.eql '<Im an object>'				
+			end
+
     end
     
     describe 'destub()'
@@ -332,23 +341,6 @@ describe 'Utility'
       it 'should output an instance of Constructor'
         object = { an_instance_of: Array }
         puts(object).should.eql 'an instance of Array'
-      end
-    end
-    
-    describe 'with jQuery'
-      it 'should output selector when present'
-        object = { jquery: '1.3.2', selector: '.foo bar' }
-        puts(object).should.eql 'selector ".foo bar"'
-      end
-      
-      it 'should output outerHTML otherwise'
-        puts($('<p>Foo</p>')).should.match(/<p>Foo<\/p>/i)
-      end
-    end
-    
-    describe 'with elements'
-      it 'should output the outerHTML'
-        puts($('<p>Foo</p>').get(0)).should.match(/<p>Foo<\/p>/i)
       end
     end
     

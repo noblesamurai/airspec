@@ -14,6 +14,7 @@ lib/jspec.css
 lib/jspec.growl.js
 lib/jspec.jquery.js
 lib/jspec.js
+lib/jspec.nodejs.js
 lib/jspec.shell.js
 lib/jspec.timers.js
 lib/jspec.xhr.js
@@ -43,6 +44,7 @@ spec/unit/spec.jquery.xhr.js
 spec/unit/spec.js
 spec/unit/spec.matchers.js
 spec/unit/spec.modules.js
+spec/unit/spec.node.js
 spec/unit/spec.shared-behaviors.js
 spec/unit/spec.utils.js
 spec/unit/spec.xhr.js
@@ -70,6 +72,12 @@ templates/default/spec/airlib/AIRAliases.js
 templates/default/spec/airlib/AIRIntrospector.js
 templates/default/spec/console.html
 templates/default/spec/console.xml
+templates/node/History.md
+templates/node/Readme.md
+templates/node/lib/yourlib.js
+templates/node/spec/node.js
+templates/node/spec/unit/spec.helper.js
+templates/node/spec/unit/spec.js
 templates/rails/commands/example_commands.rb
 templates/rails/dom.html
 templates/rails/rhino.js
